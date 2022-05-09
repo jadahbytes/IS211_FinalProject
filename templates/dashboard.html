@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style media="screen">
+        body {
+          font-family: "Trebuchet MS";
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        /* Change the link color to #111 (black) on hover */
+        li a:hover {
+          background-color: #111;
+        }
+        .bg-wrap {
+          overflow: hidden;
+          position: relative;
+        }
+
+        .bg {
+          opacity: 0.5;
+          position: absolute;
+          left: 0;
+          top: 0;
+          object-fit: fill;
+          height: auto;
+        }
+
+        .content {
+          position: relative;
+        }
+
+        a.button5 {
+         display:inline-block;
+         padding:0.46em 1.6em;
+         border:0.1em solid #000000;
+         margin:0 0.2em 0.2em 0;
+         border-radius:0.12em;
+         box-sizing: border-box;
+         text-decoration:none;
+         font-family:'Roboto',sans-serif;
+         font-weight:300;
+         color:#000000;
+         text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+         background-color:#FFFFFF;
+         text-align:center;
+         transition: all 0.15s;
+        }
+
+        a.button5:hover {
+         text-shadow: 0 0 2em rgba(255,255,255,1);
+         color:#FFFFFF;
+         border-color:#FFFFFF;
+        }
+
+        @media all and (max-width:30em) {
+         a.button5{
+          display:block;
+          margin:0.4em auto;
+         }
+        }
+    </style>
+</head>
+<body>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a class="active" href='/dashboard'>Blog Dashboard</a></li>
+    <li><a href='/create_post'>Create A Post</a></li>
+    <li><a href='/login'>Login</a></li>
+  </ul>
+<h1 align="center">Existing Posts</h1>
+<table border="1px black" align="center">
+    <tr>
+        <th width="150px" align="left">Post Title</th>
+        <th width="150px" align="left">Creation Date</th>
+        <th width="50px" align="left">Edit</th>
+        <th width="60px" align="left">Delete</th>
+        <th width="150px" align="left">Publish / Unpublish</th>
+        <th width="130px" align="left">Publication Status</th>
+    </tr>
+{% for posts in blog %}
+    <tr>
+        <td><a href ="/{{ posts[4] }}">{{ posts[0] }}</a></td>
+        <td>{{ posts[1] }}</td>
+        <td><button onclick="document.location='edit_post/{{posts[4]}}'">Edit</button></td>
+        <td><button onclick="document.location='delete/{{posts[4]}}'">Delete</button></td>
+        <td><button onclick="document.location='publish/{{posts[4]}}'">Publish</button> &nbsp;
+            <button onclick="document.location='unpublish/{{posts[4]}}'">Unpublish</button></td>
+        {% if posts[5] %}
+        <td>Published</td>
+        {% endif %}
+        {% if not posts[5] %}
+        <td>Unpublished</td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<table>
+  <h1 align="center">Click <a href='/create_post' class="button5" style="border-color:#FFFFFF; color:#00000">here</a> to create a new post!</h1>
+</table>
+
+</div>
+</div>
+</div>
+</body>
+</html>

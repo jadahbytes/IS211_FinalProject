@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Home</title>
+    <style media="screen">
+        body {
+          font-family: "Trebuchet MS";
+
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        /* Change the link color to #111 (black) on hover */
+        li a:hover {
+          background-color: #111;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            font-weight: bolder;
+        }
+        .bg-wrap {
+          overflow: hidden;
+          position: relative;
+        }
+
+        .bg {
+          opacity: 0.5;
+          position: absolute;
+          left: 0;
+          top: 0;
+          object-fit: fill;
+          height: auto;
+        }
+
+        .content {
+          position: relative;
+        }
+    </style>
+</head>
+<body>
+  <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a class="active" href='/dashboard'>Blog Dashboard</a></li>
+    <li><a href='/create_post'>Create A Post</a></li>
+    <li><a href='/login'>Login</a></li>
+  </ul>
+
+  <table class="styled-table" border="1px black" align="center">
+    <tr>
+        <th width="200px">Post Title</th>
+        <th width="200px">Publication Date</th>
+        <th width="200px">Author</th>
+    </tr>
+    {% for posts in blog %}
+    <tr>
+        <td width="200px" align="center"><a href ="/{{ posts[4] }}">{{ posts[0] }}</a></td>
+        <td width="200px" align="center">{{ posts[1] }}</td>
+        <td width="200px" align="center">{{ posts[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</body>
+</html>
